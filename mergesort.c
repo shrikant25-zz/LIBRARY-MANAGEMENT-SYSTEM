@@ -1,6 +1,6 @@
 //this program accepts a linked list and sorts the lsit with merge sort
 //the merge sort is modified according to the requirements of the program
-//along with the list the sort function accepts a character whhich the first word of the category of book(for more chech declared.h)
+//along with the list the sort function accepts a character whhich the first word of the optin choosen by user, options include the members of book structure(for more chech declared.h)
 
 
 #include <stdio.h>
