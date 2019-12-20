@@ -961,7 +961,7 @@ void add_member(struct member **member_info)                                    
 
 //*******************************************************************************************************************************
 
-void remove_member(struct member **member_info)
+void remove_member(struct member **member_info)                                                    //this function is used to remove a member
 {
 
     char member_id[max_size];
@@ -970,22 +970,22 @@ void remove_member(struct member **member_info)
 
        printf("\n\t\t\t\t\t\tEnter Member Id\n\t\t\t\t\t\t");
        acceptstring(member_id);
-              temp = member_info;
+              temp = member_info;                                                                  //accepts member id 
 
        while(*temp)
         {
-         if( !(strcmp((*temp)->memb_id,member_id)  ) )
+         if( !(strcmp((*temp)->memb_id,member_id)  ) )                                             //compares member id in record with the user input 
          {
               free_m = (*temp);
-              *temp = (*temp)->next;
-              free(free_m);
+              *temp = (*temp)->next;                                                                //if found then reomves the record, it follows the linked list function to remove a node
+              free(free_m);                                                                         //using double pointer
               free_m = NULL;
               printf("\n\t\t\t\t\t\tMember deleted successfully\n");
               break;
          }
          else
             temp = &(*temp)->next;
-            if(temp == NULL)
+            if(temp == NULL)                                                                         //if not found then appropriate message is displayed
             printf("\n\t\t\t\t\t\tId not found\n");
         }
       temp = NULL;
@@ -995,20 +995,20 @@ void remove_member(struct member **member_info)
 
 //*******************************************************************************************************************************
 
-void view_mem(struct member *member_info)
+void view_mem(struct member *member_info)                                                            //this is funciton is used to veiw a member
 {
    struct member *temp = member_info;
 
-   while(temp)
-   {
-       memberinfo(temp);
+   while(temp)                                                                                       //loops iterates through the list
+   {                                                                                                      
+       memberinfo(temp);                                                                             //succesively the display function is called
        temp = temp->next;
    }
 }
 
 //*******************************************************************************************************************************
 
-void search_mem(struct member *member_info)
+void search_mem(struct member *member_info)                                                          //this fucntion is used to search a member
 {
   char meminfo[max_size];
   struct member *temp = member_info;
@@ -1016,34 +1016,34 @@ void search_mem(struct member *member_info)
   int flag = 0;
 
   printf("\n\t\t\t\t\t\tPress 1 to search by Member Id");
-  printf("\n\t\t\t\t\t\tPress 2 to search by Member Name");
+  printf("\n\t\t\t\t\t\tPress 2 to search by Member Name");                                           //asks for searching method
   fflush(stdin);
   printf("\n\t\t\t\t\t\t");
   scanf("%d",&option);
   system("cls");
-  switch(option)
+  switch(option)                                                                                      //switch operates according to user input
   {
-      case 1 : printf("\n\t\t\t\t\t\tEnter the ID of Member\n\t\t\t\t\t\t");
-               acceptstring(meminfo);
+      case 1 : printf("\n\t\t\t\t\t\tEnter the ID of Member\n\t\t\t\t\t\t");   
+               acceptstring(meminfo);                                                                 //this function accepts the member id from user
                 while(temp)
                   {
-                    if(!(strcmp(meminfo,temp->memb_id)))
+                    if(!(strcmp(meminfo,temp->memb_id)))                                               //compares user input with data in list
                     {
-                        flag = 1;
-                        memberinfo(temp);
+                        flag = 1;                                                                      //if found falg is set to '1'
+                        memberinfo(temp);                                                              //display function is called
                         break;
                     }
                     else
                     temp = temp->next;
                   }
-                    if(!flag)
+                    if(!flag)                                                                           //if not found then appropriate message will be displayed
                         printf("\n\t\t\t\t\t\tID not found\n");
 
                break;
 
     //-------------------------------------------------------------------------
 
-      case 2 : printf("\n\t\t\t\t\t\tEnter the Name of Member\n\t\t\t\t\t\t");
+      case 2 : printf("\n\t\t\t\t\t\tEnter the Name of Member\n\t\t\t\t\t\t");                          //accepts the member name, rest of the functioning is same as case 1
                acceptstring(meminfo);
                 while(temp)
                   {
@@ -1067,7 +1067,7 @@ void search_mem(struct member *member_info)
 
 //*******************************************************************************************************************************
 
-void memberinfo(struct member *temp)
+void memberinfo(struct member *temp)                                                                  // it acts as supporting function for other member info function which need to display member info
 {
     printf("\n****************************************************************************************************************************\n");
     printf("\n\t\t\t\t\t\tMember ID = %s",temp->memb_id);
@@ -1078,16 +1078,15 @@ void memberinfo(struct member *temp)
 
 //*******************************************************************************************************************************
 
-void timedisplay()
+void timedisplay()                                                                                    //this function is used to display time
 {
-    time_t t;
-    time(&t);
-    printf("\n\t\t\t\t\t\t%s\n\n\n",ctime(&t));
+    time_t t;                                                                                         //declared a variable 't' with data type time_t(available in time.h header file)
+    time(&t);                                                                                         //address of variable 't' is passed as parameter to time function which stores current time stamp in 't'        printf("\n\t\t\t\t\t\t%s\n\n\n",ctime(&t));                                                       //ctime function converts the time into a c lang string and into a human readable format
 }
 
 //*******************************************************************************************************************************
 
-void issue(struct book **book_info,struct member *member_info,struct issue **issue_info)
+void issue(struct book **book_info,struct member *member_info,struct issue **issue_info)              //this fucntion handles varies options related to issuing the book
 {
 
     do
@@ -1098,7 +1097,7 @@ void issue(struct book **book_info,struct member *member_info,struct issue **iss
      printf("\n\t\t\t\t\t\tSelect the option");
      printf("\n\t\t\t\t\t\tPress 1 and hit 'Enter' to Issue a book");
      printf("\n\t\t\t\t\t\tPress 2 and hit 'Enter' to search issued book");
-     printf("\n\t\t\t\t\t\tPress 3 and hit 'Enter' to view list of issued books");
+     printf("\n\t\t\t\t\t\tPress 3 and hit 'Enter' to view list of issued books");                    //displays vaious options
      printf("\n\t\t\t\t\t\tPress 4 and hit 'Enter' to remove issued book\n");
      printf("\n****************************************************************************************************************************\n\t\t\t\t\t\t");
 
@@ -1108,10 +1107,10 @@ void issue(struct book **book_info,struct member *member_info,struct issue **iss
      //-------------------------------------------------------------------------
         switch(option)
         {
-            case 1 :  if(member_info)
+            case 1 :  if(member_info)                                                                 //checks if the linked list for member info exists
                        {
-                        if(*book_info)
-                         issue_book(book_info,member_info,issue_info);
+                        if(*book_info)                                                                //checks if the linked list for book info exists
+                         issue_book(book_info,member_info,issue_info);                                //calls the issue book fucntion
                         else
                          printf("\n\t\t\t\t\t\tNo Books Available\n");
                        }
@@ -1120,19 +1119,19 @@ void issue(struct book **book_info,struct member *member_info,struct issue **iss
                       break;
 
             case 2 :  if(*issue_info)
-                      search_issueed(*issue_info);
+                      search_issueed(*issue_info);                                                    //calls the search_issued function to search a issued book
                      else
                         printf("\n\t\t\t\t\t\tNo Books are Issued\n");
                      break;
 
             case 3 :   if(*issue_info)
-                      view_issued_list(*issue_info);
+                      view_issued_list(*issue_info);                                                  //calls the view_list function to view the list of issued books
                      else
                         printf("\n\t\t\t\t\t\tNo Books are Issued\n");
                      break;
 
             case 4 :  if(*issue_info)
-                      remove_issued_book(book_info,issue_info);
+                      remove_issued_book(book_info,issue_info);                                       //calls the remove the function remove a issued book
                      else
                         printf("\n\t\t\t\t\t\tNo Books are Issued\n");
                      break;
@@ -1152,7 +1151,7 @@ void issue(struct book **book_info,struct member *member_info,struct issue **iss
 
 //*******************************************************************************************************************************
 
-void issue_book(struct book **book_info,struct member *member_info,struct issue **issue_info)
+void issue_book(struct book **book_info,struct member *member_info,struct issue **issue_info)         //this fucntion is used to issue books
 {
 
   struct member *memb_temp = member_info;
@@ -1167,14 +1166,14 @@ void issue_book(struct book **book_info,struct member *member_info,struct issue 
 
 
     printf("\n\t\t\t\tEnter the Book ID\n\t\t\t\t\t\t");
-    acceptstring(bookinfo);
+    acceptstring(bookinfo);                                                                           //accspts the book id from user
 
          while(book_temp)
             {
-              if(!(strcmp(bookinfo,book_temp->Book_ID)))
+              if(!(strcmp(bookinfo,book_temp->Book_ID)))                                              //checks the user input in record 
                 {
-                   flag = 1;
-                  if((book_temp->Quantity) == 0)
+                    flag = 1;                                                                         //if found sets the flag to 1
+                  if((book_temp->Quantity) == 0)                                                      //if book quantity is null then sets teh flag to 0
                     flag = 0;
                   break;
                 }
