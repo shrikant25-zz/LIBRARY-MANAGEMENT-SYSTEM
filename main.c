@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "declared.h"         //header file for declared structures and other defined values
-#include <stdio.h> 
+#include <stdio.h>
 #define _WIN32_WINNT 0x0500 //constant for console resizing (redefinition as per mentioned in header file)
 #include <windows.h> //defines a very large number of Windows specific functions that can be used in C.
 
@@ -210,11 +210,11 @@ void add_books_to_record(struct book **book_info)                               
 
             }while(!(strcmp(new->Book_ID,"\0")) || (new->Book_ID[0] == chk_wht_spc[0]));                         //if the input is not proper the loop continues
 
-        }while(flag);                                                                                            //outer loop continues if the flag is set to 1 
+        }while(flag);                                                                                            //outer loop continues if the flag is set to 1
 
       //-------------------------------------------------------------------------
 
-         do                                                                                                    
+         do
           {                                                                                                      //accepts the book name
            printf("\n\t\t\t\t\t\tEnter the book Name\n\t\t\t\t\t\t");
            acceptstring(new->Book_Name);
@@ -227,9 +227,9 @@ void add_books_to_record(struct book **book_info)                               
 
          do
           {
-           printf("\n\t\t\t\t\t\tEnter the book Author Name\n\t\t\t\t\t\t");             
+           printf("\n\t\t\t\t\t\tEnter the book Author Name\n\t\t\t\t\t\t");
            acceptstring(new->Author_Name);                                                                       //accepts the author name
-                                                                                                                      
+
            if(!(strcmp(new->Author_Name,"\0")) || (new->Author_Name[0] == chk_wht_spc[0]))                       //user input checked
             printf("\n\t\t\t\t\t\tAuthor Name can't be NULL");
            }while(!(strcmp(new->Author_Name,"\0")) || (new->Author_Name[0] == chk_wht_spc[0]));
@@ -238,7 +238,7 @@ void add_books_to_record(struct book **book_info)                               
 
          do
           {
-           printf("\n\t\t\t\t\t\tEnter the Category of book\n\t\t\t\t\t\t");                                     //accepts the category of book 
+           printf("\n\t\t\t\t\t\tEnter the Category of book\n\t\t\t\t\t\t");                                     //accepts the category of book
            acceptstring(new->Category);
 
            if(!(strcmp(new->Category,"\0")) || (new->Category[0] == chk_wht_spc[0]))
@@ -256,9 +256,9 @@ void add_books_to_record(struct book **book_info)                               
            printf("\n\t\t\t\t\t\tEnter the book Quantity\n\t\t\t\t\t\t");                                       //accepts the book quantitiy
            chk = scanf("%d",&new->Quantity);                                                                    //if the user enters a character instead of an integer then the scanf fucniton returns 0 else 1
                                                                                                                 //if scanf returns 0 then the chk flag is set to 0
-           if(new->Quantity < 1)                                                                                //checks the user input 
+           if(new->Quantity < 1)                                                                                //checks the user input
            printf("\n\t\t\t\t\t\tQuantity can't be less than zero");
-          }while(new->Quantity < 1 || chk == 0);                                                                //the loop continues if the quantity is less than 1 or if the chk flag is 0 
+          }while(new->Quantity < 1 || chk == 0);                                                                //the loop continues if the quantity is less than 1 or if the chk flag is 0
 
          chk = 0;
 
@@ -325,7 +325,7 @@ void close_application(struct book *book_info,struct member *member_info,struct 
 {
 
     struct book * temp = NULL;
-    if(book_info)                                                                                           //if the pointer is present the concerned file is opened 
+    if(book_info)                                                                                           //if the pointer is present the concerned file is opened
     {                                                                                                       //writes the data of books to the concerned file
 
        read_books = fopen("books.txt","w");
@@ -333,7 +333,7 @@ void close_application(struct book *book_info,struct member *member_info,struct 
          book_info = mergesort(book_info,'N');                                                              //sort function is called to sort the data before it is stored in file
          temp = book_info;
 
-         while(temp)                                                                                                   
+         while(temp)
          {
            fflush(stdout);
            fprintf(read_books,"%s %s %s %s %d %d %d",temp->Category,temp->Book_ID,temp->Book_Name,temp->Author_Name,temp->Quantity,temp->Price,temp->Rack_No);    //data is written to the file
@@ -404,7 +404,7 @@ void close_application(struct book *book_info,struct member *member_info,struct 
 
 //*******************************************************************************************************************************
 
-void delete_books_record(struct book **book_info)                                                      //this is funciton is used to delete books record 
+void delete_books_record(struct book **book_info)                                                      //this is funciton is used to delete books record
 {
 
  do
@@ -440,7 +440,7 @@ void delete_books_record(struct book **book_info)                               
 
 
           int flag_c = 0;
-      if((flag_c = askforcontinuation()))                                                               //give call to continuation function 
+      if((flag_c = askforcontinuation()))                                                               //give call to continuation function
            return;
 
   }while(1);
@@ -472,7 +472,7 @@ void search_book(struct book *book_info)                                        
       fflush(stdin);
       scanf("%d",&option);
     system("cls");
-      switch(option)                                                                               
+      switch(option)
        {
          case 1 : printf("\n\t\t\t\t\t\tType the Book Category and hit 'Enter'\n\t\t\t\t\t\t");        //switch case is used to match various conditions
                   acceptstring(choice_string);
@@ -650,7 +650,7 @@ void edit_books_record(struct book **book_info)                                 
             {
 
                 case 1 : printf("\n\t\t\t\t\t\tCurrent Book Category is %s",temp->Category);
-                         printf("\n\t\t\t\t\t\tEnter the new Book Catgeory\n\t\t\t\t\t\t");       
+                         printf("\n\t\t\t\t\t\tEnter the new Book Catgeory\n\t\t\t\t\t\t");
                          acceptstring(c_new_data);
                          strcpy(temp->Category,c_new_data);                                        //copies newly added data in the record
                          break;
@@ -795,7 +795,7 @@ void view_books_list(struct book * book_info)                                   
 
 //*******************************************************************************************************************************
 
-void displaybooks(struct book *temp)                                                       //this is a small function consists of a loop which continously calls the another function to display books info 
+void displaybooks(struct book *temp)                                                       //this is a small function consists of a loop which continously calls the another function to display books info
 {
     while(temp)
      {
@@ -828,7 +828,7 @@ void mem(struct member **member_info)                                           
 
     printf("\n\t\t\t\t\t\tChoose the option from following\n");
     printf("\n\t\t\t\t\t\t Press 1 and hit 'Enter' to add member");                       //displays various options
-    printf("\n\t\t\t\t\t\t Press 2 and hit 'Enter' to remove member");             
+    printf("\n\t\t\t\t\t\t Press 2 and hit 'Enter' to remove member");
     printf("\n\t\t\t\t\t\t Press 3 and hit 'Enter' to view members");
     printf("\n\t\t\t\t\t\t Press 4 and hit 'Enter' to search member\n\t\t\t\t\t\t");
 
@@ -853,7 +853,7 @@ void mem(struct member **member_info)                                           
                  break;
 
         case 4 : if((*member_info))
-                   search_mem(*member_info);                                             //this function is used to search members 
+                   search_mem(*member_info);                                             //this function is used to search members
                  else
                    printf("\n\t\t\t\t\t\tNo members available\n");
                  break;
@@ -970,11 +970,11 @@ void remove_member(struct member **member_info)                                 
 
        printf("\n\t\t\t\t\t\tEnter Member Id\n\t\t\t\t\t\t");
        acceptstring(member_id);
-              temp = member_info;                                                                   //accepts member id 
+              temp = member_info;                                                                   //accepts member id
 
        while(*temp)
         {
-         if( !(strcmp((*temp)->memb_id,member_id)  ) )                                              //compares member id in record with the user input 
+         if( !(strcmp((*temp)->memb_id,member_id)  ) )                                              //compares member id in record with the user input
          {
               free_m = (*temp);
               *temp = (*temp)->next;                                                                //if found then reomves the record, it follows the linked list function to remove a node
@@ -1000,7 +1000,7 @@ void view_mem(struct member *member_info)                                       
    struct member *temp = member_info;
 
    while(temp)                                                                                       //loops iterates through the list
-   {                                                                                                      
+   {
        memberinfo(temp);                                                                             //succesively the display function is called
        temp = temp->next;
    }
@@ -1023,7 +1023,7 @@ void search_mem(struct member *member_info)                                     
   system("cls");
   switch(option)                                                                                       //switch operates according to user input
   {
-      case 1 : printf("\n\t\t\t\t\t\tEnter the ID of Member\n\t\t\t\t\t\t");   
+      case 1 : printf("\n\t\t\t\t\t\tEnter the ID of Member\n\t\t\t\t\t\t");
                acceptstring(meminfo);                                                                  //this function accepts the member id from user
                 while(temp)
                   {
@@ -1081,7 +1081,8 @@ void memberinfo(struct member *temp)                                            
 void timedisplay()                                                                                    //this function is used to display time
 {
     time_t t;                                                                                         //declared a variable 't' with data type time_t(available in time.h header file)
-    time(&t);                                                                                         //address of variable 't' is passed as parameter to time function which stores current time stamp in 't'        printf("\n\t\t\t\t\t\t%s\n\n\n",ctime(&t));                                                       //ctime function converts the time into a c lang string and into a human readable format
+    time(&t);                                                                                         //address of variable 't' is passed as parameter to time function which stores current time stamp in 't'
+    printf("\n\t\t\t\t\t\t%s\n\n\n",ctime(&t));                                                       //ctime function converts the time into a c lang string and into a human readable format
 }
 
 //*******************************************************************************************************************************
@@ -1170,7 +1171,7 @@ void issue_book(struct book **book_info,struct member *member_info,struct issue 
 
          while(book_temp)
             {
-              if(!(strcmp(bookinfo,book_temp->Book_ID)))                                              //checks the user input in record 
+              if(!(strcmp(bookinfo,book_temp->Book_ID)))                                              //checks the user input in record
                 {
                     flag = 1;                                                                         //if found sets the flag to 1
                   if((book_temp->Quantity) == 0)                                                      //if book quantity is null then sets teh flag to 0
@@ -1178,7 +1179,7 @@ void issue_book(struct book **book_info,struct member *member_info,struct issue 
                   break;
                 }
                   else
-              book_temp = book_temp->next;                                         
+              book_temp = book_temp->next;
             }
 
               if(!flag)                                                                               //if book is not available in library then displays the appropraite message
@@ -1191,7 +1192,7 @@ void issue_book(struct book **book_info,struct member *member_info,struct issue 
 
 
 
-     printf("\n\t\t\t\tEnter the Member ID\n\t\t\t\t\t\t");                                             
+     printf("\n\t\t\t\tEnter the Member ID\n\t\t\t\t\t\t");
      acceptstring(membinfo);                                                                           //accepts the member id
 
          while(memb_temp)
@@ -1217,7 +1218,7 @@ void issue_book(struct book **book_info,struct member *member_info,struct issue 
      --book_temp->Quantity;                                                                            //if meber_id as well as book id both are valid, then the book is issued and its quantity is reduced by 1
                                                                                                        //from books record
      new = (struct issue *)malloc(sizeof(struct issue));
-     strcpy(new->Book_Id,book_temp->Book_ID);                                                          //new memory is allocated and issued_books record is updated 
+     strcpy(new->Book_Id,book_temp->Book_ID);                                                          //new memory is allocated and issued_books record is updated
      strcpy(new->memb_id,memb_temp->memb_id);
      new ->next = NULL;
 
@@ -1392,7 +1393,7 @@ void issueinfo(struct issue *temp)                                              
 
 //*******************************************************************************************************************************
 
-int main()                                                                                                 //main :) 
+int main()                                                                                                 //main :)
  {
 
       HWND hwnd = GetConsoleWindow();                                                                      //windows api function to get console in handle(declared in windows.h)
@@ -1413,7 +1414,7 @@ int main()                                                                      
     read_issue_file(&issue_info);                                                                          //reads data from issued file
 
     if(book_info)
-   book_info = mergesort(book_info,'N');                                                                   //if book_info linked contains any node then it is sorted using merge sort. 
+   book_info = mergesort(book_info,'N');                                                                   //if book_info linked contains any node then it is sorted using merge sort.
                                                                                                            //Here 'N' parameter tells the merge sort to sort the data using 'N'ames of book
    //-------------------------------------------------------------------------
 
@@ -1441,7 +1442,7 @@ int main()                                                                      
          case 1  :  issue(&book_info,member_info,&issue_info);                                              //function to perform various tasks related to book issuing
                    break;
 
-         case 2  : if(book_info)                   
+         case 2  : if(book_info)
                      search_book(book_info);                                                                //function to search a record in book info
                    else
                      printf("\n\t\t\t\t\t\tNo Books Available");
@@ -1475,9 +1476,9 @@ int main()                                                                      
                    book_info = NULL;
 		   member_info = NULL;                                                                      //sets the pointer to NULL
 		   issue_info = NULL;
-                   free(book_info);  
-		   free(member_info);                                                                       //frees the alocated memory
-		   free(issue_info;)
+                   free(book_info);
+		   free(member_info);                                                                       //free the allocated memory
+		   free(issue_info);
                    exit(0);
                     break;
 
