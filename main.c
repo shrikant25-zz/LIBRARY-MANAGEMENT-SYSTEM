@@ -3,10 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include "declared.h"         //header file for declared structures and other defined values
+#include "declared.h"       //header file for declared structures and other defined values
 #include <stdio.h>
 #define _WIN32_WINNT 0x0500 //constant for console resizing (redefinition as per mentioned in header file)
-#include <windows.h> //defines a very large number of Windows specific functions that can be used in C.
+#include <windows.h>        //defines number of Windows specific functions that can be used in to improve layout of program
 
 //*******************************************************************************************************************************
 
@@ -1445,13 +1445,19 @@ int main()                                                                      
          case 2  : if(book_info)
                      search_book(book_info);                                                                //function to search a record in book info
                    else
+		   {
                      printf("\n\t\t\t\t\t\tNo Books Available");
+		     Sleep(3000);                                                                           //Sleep function is defined in windows.h header filed, it stops all functioning for given miliseconds.
+		   }
                    break;
 
          case 3  : if(book_info)
                     view_books_list(book_info);                                                             //function to view books list
                    else
+	           {
                      printf("\n\t\t\t\t\t\tNo Books Available");
+		     Sleep(3000);
+		   }
                    break;
 
          case 4  : add_books_to_record(&book_info);                                                         //function to add new books in the list
@@ -1460,19 +1466,25 @@ int main()                                                                      
          case 5  : if(book_info)
                      edit_books_record(&book_info);                                                         //function to edit books record
                    else
+		   {
                      printf("\n\t\t\t\t\t\tNo Books Available");
+		     Sleep(3000);
+		   }
                    break;
 
          case 6  : if(book_info)
                      delete_books_record(&book_info);                                                       //function to delete a node from books record
                    else
+		   {
                      printf("\n\t\t\t\t\t\tNo Books Available");
+		     Sleep(3000);
+		   }
                    break;
 
          case 7 :  mem(&member_info);                                                                       //function to perform various tasks related to members
                    break;
 
-         case 8  : close_application(book_info,member_info,issue_info);                                     //calls the close application function, the function saves all the data in .txt files
+         case 8 i : close_application(book_info,member_info,issue_info);                                     //calls the close application function, the function saves all the data in .txt files
                    book_info = NULL;
 		   member_info = NULL;                                                                      //sets the pointer to NULL
 		   issue_info = NULL;
