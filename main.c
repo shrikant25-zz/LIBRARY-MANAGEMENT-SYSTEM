@@ -1484,7 +1484,7 @@ int main()                                                                      
          case 7 :  mem(&member_info);                                                                       //function to perform various tasks related to members
                    break;
 
-         case 8 i : close_application(book_info,member_info,issue_info);                                     //calls the close application function, the function saves all the data in .txt files
+         case 8  : close_application(book_info,member_info,issue_info);                                     //calls the close application function, the function saves all the data in .txt files
                    book_info = NULL;
 		   member_info = NULL;                                                                      //sets the pointer to NULL
 		   issue_info = NULL;
