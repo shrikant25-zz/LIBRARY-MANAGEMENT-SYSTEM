@@ -27,6 +27,8 @@ struct issue
   char memb_id[max_size];
   char Book_Id[max_size];
   struct issue *next;
+  char issue_date[80];
+  char return_date[80];
 };
 #endif // struct_issue
 
@@ -49,7 +51,7 @@ struct book * mergesort(struct book*,char);
 #ifndef accep_string
 #define accept_string
 void acceptstring(char *);
-#endif // accep_string
+#endif // accept_string
 
 #ifndef ask_continuation
 #define ask_continuation
