@@ -1,6 +1,6 @@
 //this program accepts a linked list and sorts the lsit with merge sort
 //the merge sort is modified according to the requirements of the program
-//along with the list the sort function accepts a character whhich the first word of the optin choosen by user, options include the members of book structure(for more chech declared.h)
+//along with the list the sort function accepts a character which the first word of the option choosen by user, options include the members of book structure(for more chech declared.h)
 
 
 #include <stdio.h>
@@ -17,7 +17,7 @@ int compare_strings(char *a,char *b);                          //function to com
 int compare_int(int a,int b);                                  //function to compare two integers
 
 
-struct book* mergesort(struct book* h,char n)                   
+struct book* mergesort(struct book* h,char n)
 {
 	struct book* head = h;
 	struct book* a = NULL;
@@ -27,7 +27,7 @@ struct book* mergesort(struct book* h,char n)
 	if ((head == NULL) || (head->next == NULL))
        return head;
 
-	split(head,&a,&b);                                          
+	split(head,&a,&b);
 
 	a = mergesort(a,n);
 	b = mergesort(b,n);
@@ -59,7 +59,7 @@ struct book* sortedmerge(struct book* a, struct book* b, char n)    //accepts tw
 
 	if (comparision_flag)                                       //if comparision_flag is true it means the first string is smaller
          {                                                          //hence it will be added first in the list
-		result = a;                                            
+		result = a;
 		result->next = sortedmerge(a->next, b, n);         //recursivley calls itself untill an exit condition is encountered
 	}
 	else
@@ -70,26 +70,26 @@ struct book* sortedmerge(struct book* a, struct book* b, char n)    //accepts tw
 	return (result);
 }
 
-void split(struct book* source,struct book** front, struct book** back)  //this function splits the given string in two parts, it accepts the pointer to the head of the string and address of other two pointers 
+void split(struct book* source,struct book** front, struct book** back)  //this function splits the given string in two parts, it accepts the pointer to the head of the string and address of other two pointers
 {                                                                        //the other two pointers are used two store the two parts of the string after splitting.
 	struct book* fast;                                               //[ source->1->2->3->4->NULL ]
 	struct book* slow;
-	slow = source;                                                      //pointer 'slow' is assigned the address of first element of the string 
+	slow = source;                                                      //pointer 'slow' is assigned the address of first element of the string
 	fast = source->next;                                                //pointer  'fast' is assigned the address of the element next to first element(i.e second element)
 
-	while (fast != NULL) 
+	while (fast != NULL)
 	{                                                          //untill the fast pointer reaches NULL the loop continues
 		fast = fast->next;                                 //the 'fast' pointer is incremented twice while the 'slow' pointer is incremented only once per iterarion
 		if (fast != NULL) {
 			slow = slow->next;                         //both the pointer are incremented
 			fast = fast->next;
 		}
-	}                                                          //because of such incrementation the 'fast' pointer reaches the end of the string and at the same time 
+	}                                                          //because of such incrementation the 'fast' pointer reaches the end of the string and at the same time
                                                                    //th slow pointer reaches at the the center of string
 	(*front) = source;                                         //'front' pointer is assigned the address of head os the string
 	(*back) = slow->next;                                      //while the 'back' pointer is assigned the address of the element next to the element at center
 	slow->next = NULL;                                         //the 'slow' is set to store NULL in its address storing ('next') place, resulting in the split of string.
-}                                                                  // [ source->1->2->3->4->NULL ]  ....  after split [ front->1->2->NULL and back->3->4->NULL ]    
+}                                                                  // [ source->1->2->3->4->NULL ]  ....  after split [ front->1->2->NULL and back->3->4->NULL ]
 
 
 int compare_int(int a,int b)
